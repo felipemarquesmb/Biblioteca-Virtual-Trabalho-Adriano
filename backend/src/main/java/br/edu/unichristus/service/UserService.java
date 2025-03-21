@@ -12,7 +12,8 @@ public class UserService {
     private UserRepository repository;
 
     public User save(User user){
-         return repository.save(user);
+        var savedUser = repository.save(user);
+        return savedUser;
     }
 
 
