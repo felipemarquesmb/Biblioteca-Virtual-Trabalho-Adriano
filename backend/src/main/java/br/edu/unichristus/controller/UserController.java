@@ -1,5 +1,7 @@
 package br.edu.unichristus.controller;
 
+import br.edu.unichristus.domain.dto.UserDTO;
+import br.edu.unichristus.domain.dto.UserLowDTO;
 import br.edu.unichristus.domain.model.User;
 import br.edu.unichristus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +17,17 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public User save(@RequestBody User user){
+    public UserLowDTO save(@RequestBody UserDTO user){
         return service.save(user);
     }
 
     @PutMapping
-    public User update(@RequestBody User user){
+    public UserLowDTO update(@RequestBody UserDTO user){
         return service.save(user);
     }
 
     @GetMapping("/all")
-    public List<User> findAll(){
+    public List<UserLowDTO> findAll(){
         return service.findAll();
     }
 
