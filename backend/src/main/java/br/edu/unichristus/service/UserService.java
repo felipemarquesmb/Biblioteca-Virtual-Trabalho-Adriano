@@ -3,9 +3,11 @@ package br.edu.unichristus.service;
 import br.edu.unichristus.domain.dto.UserDTO;
 import br.edu.unichristus.domain.dto.UserLowDTO;
 import br.edu.unichristus.domain.model.User;
+import br.edu.unichristus.exception.CommonsException;
 import br.edu.unichristus.repository.UserRepository;
 import br.edu.unichristus.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,13 @@ public class UserService {
     }
 
     public User findById(Long id){
+        var userEntity = repository.findById(id);
+        if(userEntity.isEmpty()){
+            throw new CommonsException(HttpStatus.NOT_FOUND,
+                    "unichristus.user.findbyid.notfound",
+                    "Usuário não encontrado!");
+        }
+
         return repository.findById(id).get();
     }
 
