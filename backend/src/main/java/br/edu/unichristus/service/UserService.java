@@ -2,6 +2,7 @@ package br.edu.unichristus.service;
 
 import br.edu.unichristus.domain.dto.UserDTO;
 import br.edu.unichristus.domain.dto.UserLowDTO;
+import br.edu.unichristus.domain.dto.UserRolesDTO;
 import br.edu.unichristus.domain.model.User;
 import br.edu.unichristus.exception.CommonsException;
 import br.edu.unichristus.repository.UserRepository;
@@ -42,6 +43,19 @@ public class UserService {
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+    public UserRolesDTO getRolesByUserId(Long id){
+        var userEntity = repository.findById(id);
+        if(userEntity.isEmpty()){
+            throw new CommonsException(HttpStatus.NOT_FOUND,
+                    "unichristus.user.findbyid.notfound",
+                    "Usuário não encontrado!");
+        }
+        var userDTO = MapperUtil.parseObject(userEntity, UserRolesDTO.class);
+        userDTO.setRoles(new String[]{"MANAGER", "ADMIN", "COMMON_USER"});
+
+        return userDTO;
     }
 
 
