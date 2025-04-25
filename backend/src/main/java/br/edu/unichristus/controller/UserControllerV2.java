@@ -14,6 +14,8 @@ import java.util.List;
 @RequestMapping("/api/v2/user")
 public class UserControllerV2 {
 
+    //https://dontpad.com/spring-aula
+
     @Autowired
     private UserService service;
 
