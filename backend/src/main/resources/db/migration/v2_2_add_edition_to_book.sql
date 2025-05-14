@@ -1,0 +1,1 @@
+ALTER TABLE tb_book ADD COLUMN edition VARCHAR(255);

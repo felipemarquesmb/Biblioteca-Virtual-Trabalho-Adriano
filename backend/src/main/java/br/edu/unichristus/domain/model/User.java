@@ -1,36 +1,38 @@
+//Model representa uma entidade do sistema, ou seja, um objeto do
+//"mundo real" que queremos armazenar no banco. No caso, USUÁRIO.
+//Ele mapeia os atributos do objeto para colunas de uma
+//tabela no banco.
+
+
+
+//USAR USER COMO BASE PARA OUTRAS ENTIDADES
+
+
 package br.edu.unichristus.domain.model;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
+import java.util.Objects;   //ACHO QUE ISSO NÃO TÁ SENDO USADO
 
-@Entity
-@Table(name = "tb_user")
+@Entity     // MARCA ESSA CLASSE COMO UMA ENTIDADE DO JPA (vai virar uma tabela no banco de dados)
+@Table(name = "tb_user")  // NOME DA TABELA NO BANCO
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id   // Identifica o campo como chave primária
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Gera IDs automaticamente (auto-incremento)
     private Long id;
 
-    @Column(length = 150, nullable = false)
-    private String name;
-    private String email;
 
-    @Column(unique = true)
-    private String login;
-    private String password;
+    private String name;  //Nome do usuário
+    private String email; //Email do usuário
 
-    public User(){
+    private String login; //Login do usuário
+    private String password;  //Senha do usuário
 
-    }
 
-    public User(Long id, String name, String email, String login, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-    }
+    // Getters e setters — permitem acessar/modificar os dados de fora da classe
+    //fn + alt + insert
+
 
     public Long getId() {
         return id;
@@ -70,28 +72,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(login, user.login) && Objects.equals(password, user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, email, login, password);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }

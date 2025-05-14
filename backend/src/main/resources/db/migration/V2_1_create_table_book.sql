@@ -1,0 +1,7 @@
+CREATE TABLE tb_book (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publisher VARCHAR(255) NOT NULL,
+    year INTEGER NOT NULL
+);

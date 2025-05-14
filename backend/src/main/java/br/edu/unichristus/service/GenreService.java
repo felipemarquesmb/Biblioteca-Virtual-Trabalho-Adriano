@@ -1,9 +1,9 @@
 package br.edu.unichristus.service;
 
 
-import br.edu.unichristus.domain.model.User;
+import br.edu.unichristus.domain.model.Genre;
 import br.edu.unichristus.exception.CommonsException;  // Importa exceção personalizada da aplicação
-import br.edu.unichristus.repository.UserRepository;
+import br.edu.unichristus.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus; // Importa status HTTP (para usar em respostas de erro)
 import org.springframework.stereotype.Service; // Importa anotação de componente de serviço
@@ -11,30 +11,30 @@ import org.springframework.stereotype.Service; // Importa anotação de componen
 import java.util.List;
 
 @Service  // Marca como um serviço do Spring (classe de lógica de negócio)
-public class UserService {
+public class GenreService {
 
     @Autowired  // Injeta automaticamente o repositório
-    private UserRepository repository;
+    private GenreRepository repository;
 
-    public User save(User user){
+    public Genre save(Genre genre){
         // Salva ou atualiza um usuário no banco
-        var savedUser = repository.save(user); //
-        return savedUser; //
+        var savedGenre = repository.save(genre); //
+        return savedGenre; //
     }
 
-    public List<User> findAll(){
+    public List<Genre> findAll(){
         // Retorna todos os usuários
-        var listUsers = repository.findAll();
-        return listUsers;
+        var listGenre = repository.findAll();
+        return listGenre;
     }
 
-    public User findById(Long id){
+    public Genre findById(Long id){
         // Busca um usuáro por ID. Se não encontrar, lança exceção personalizada.
         var userEntity = repository.findById(id);
         if(userEntity.isEmpty()){
             throw new CommonsException(HttpStatus.NOT_FOUND,
-                    "unichristus.user.findbyid.notfound",
-                    "Usuário não encontrado!");
+                    "unichristus.genre.findbyid.notfound",
+                    "Gênero não encontrado!");
         }
 
         return repository.findById(id).get();
@@ -42,7 +42,6 @@ public class UserService {
 
     public void delete(Long id){
         // Deleta um usuário pelo ID
-
         repository.deleteById(id);
     }
 }

@@ -5,10 +5,9 @@
 
 package br.edu.unichristus.repository;
 
-import br.edu.unichristus.domain.model.User;
+import br.edu.unichristus.domain.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;  //ACHO QUE NÃO ESTÁ SENDO USADO
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
     // JpaRepository fornece todos os métodos CRUD prontos: save, findById, findAll, deleteById, etc.
 }
