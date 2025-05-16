@@ -76,7 +76,7 @@ public class FavoriteController {
         service.delete(id);
     }
 
-    @Operation(summary = "Envia sugestão de livro por e-mail", tags = "Favorite")
+    @Operation(summary = "Envia sugestão de livro por id", tags = "Favorite")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Sugestão enviada com sucesso"),
             @ApiResponse(responseCode = "404", description = "Usuário não encontrado",

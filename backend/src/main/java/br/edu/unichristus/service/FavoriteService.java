@@ -62,6 +62,12 @@ public class FavoriteService {
     }
 
     public void sendSuggestionsByEmail(String email) {
+        if (!email.endsWith("@gmail.com")) {
+            throw new CommonsException(HttpStatus.BAD_REQUEST,
+                    "unichristus.favorite.invalid.email.domain",
+                    "Domínio de e-mail não permitido. Use um e-mail @gmail.com.");
+        }
+
         List<Book> books = getMostFavoritedBooks();
         if (books.isEmpty()) return;
 

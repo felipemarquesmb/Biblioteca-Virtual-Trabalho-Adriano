@@ -13,8 +13,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 				version = "1.0",
 				description = "Backend da Aplicação Construída na Disciplina TE",
 				contact = @Contact(
-						name = "MUDAAAAAAAAAAAAAAAAAAAAAAARRRRRRRR",
-						email = "analista.adrianolima@gmail.com",
+						name = "Felipe Marques",
+						email = "bibliotecavirtualteste@gmail.com",
 						url = "http://unichristus.edu.br/")
 		)
 )
